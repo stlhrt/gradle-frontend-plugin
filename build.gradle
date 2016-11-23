@@ -1,0 +1,27 @@
+group 'pl.sind'
+version '0.1-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '3.0'
+  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+ext.compatibilityVersion = '1.7'
+sourceCompatibility = compatibilityVersion
+targetCompatibility = compatibilityVersion
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+def usr = System.env.USER_KEY;
+println usr
