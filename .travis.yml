@@ -6,9 +6,10 @@ cache:
     - $HOME/.gradle
 
 jdk:
-- oraclejdk7
+  - oraclejdk7
 
-script: ./gradlew ci
+script:
+  - ./gradlew ci
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
