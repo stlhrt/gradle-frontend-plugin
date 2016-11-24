@@ -7,12 +7,12 @@ class SimpleTest extends ProjectSpec {
 
     def 'nothing'(){
         given:
-        def test
+        def test = new Empty(name: 'none')
 
         when:
-        test = true
+        def name = test.name
 
         then:
-        test
+        name == 'none'
     }
 }
