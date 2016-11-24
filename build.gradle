@@ -7,7 +7,7 @@ group 'pl.sind'
 version '0.1-SNAPSHOT'
 
 task wrapper(type: Wrapper) {
-  gradleVersion = '3.0'
+  gradleVersion = '2.14.1'
   distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
 }
 

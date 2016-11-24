@@ -10,9 +10,9 @@ class SimpleTest extends ProjectSpec {
         def test = new Empty(name: 'none')
 
         when:
-        def name = test.name
+        def res = test.test()
 
         then:
-        name == 'none'
+        res == 'none0'
     }
 }
