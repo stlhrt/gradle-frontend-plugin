@@ -2,9 +2,18 @@ apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
 jacocoTestReport {
+    additionalSourceDirs = files(sourceSets.main.allSource)
     reports {
         xml.enabled = true
         html.enabled = true
+    }
+
+    executionData = files( "${buildDir}/jacoco/test.exec" )
+}
+
+test {
+    jacoco {
+        append = false
     }
 }
 
