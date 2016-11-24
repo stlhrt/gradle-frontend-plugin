@@ -1,5 +1,10 @@
+ext {
+    isMaster = System.env.'TRAVIS_BRANCH' == "master"
+    isCI = System.env.'CI'
+}
+
 task ci {
-    dependsOn 'check'
+    dependsOn 'check', 'coveralls'
     description = 'Continuous Integration tasks'
     group = 'Build'
 }
