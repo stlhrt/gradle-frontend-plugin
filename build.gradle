@@ -13,6 +13,7 @@ task wrapper(type: Wrapper) {
 
 apply plugin: 'groovy'
 apply plugin: 'java'
+apply from: "$rootDir/gradle/artifacts.gradle"
 apply from: "$rootDir/gradle/test.gradle"
 apply from: "$rootDir/gradle/ci.gradle"
 apply from: "$rootDir/gradle/publish.gradle"
