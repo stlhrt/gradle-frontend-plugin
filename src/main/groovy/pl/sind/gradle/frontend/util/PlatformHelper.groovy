@@ -1,12 +1,10 @@
 package pl.sind.gradle.frontend.util
 
-import org.gradle.internal.impldep.com.google.common.collect.ImmutableMap
-
 class PlatformHelper {
-    private final ImmutableMap<String, String> props
+    private final Map<String, String> props
 
     private PlatformHelper(Map<String, String> properties) {
-        this.props = ImmutableMap.copyOf(properties)
+        this.props = new HashMap<>(properties)
     }
 
     private String getProp(final String name) {
@@ -62,7 +60,7 @@ class PlatformHelper {
     }
 
     static PlatformHelper fromSystem(){
-        return new PlatformHelper(System.getProperties())
+        return new PlatformHelper([:])
     }
 
     static PlatformHelper fromMap(Map<String, String> map){

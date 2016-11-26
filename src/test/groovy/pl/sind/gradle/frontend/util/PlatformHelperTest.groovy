@@ -1,5 +1,6 @@
 package pl.sind.gradle.frontend.util
 
+import spock.lang.IgnoreIf
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -26,6 +27,7 @@ class PlatformHelperTest
         'Linux'     | 'x86_64' | 'linux'   | 'x64'  | false
         'SunOS'     | 'x86'    | 'sunos'   | 'x86'  | false
         'SunOS'     | 'x86_64' | 'sunos'   | 'x64'  | false
+        'freebsd'   | 'x86_64' | 'linux'   | 'x64'  | false
     }
 
     def "throw exception if unsupported os"() {
@@ -50,5 +52,14 @@ class PlatformHelperTest
         helper.os != null
         helper.arch != null
         noExceptionThrown()
+    }
+
+    @IgnoreIf({ System.getProperty('os.name').toLowerCase().contains('windows') })
+    def "should take arch from command line on linux" (){
+        given:
+        PlatformHelper helper = PlatformHelper.fromMap(["os.name": 'Linux', "os.arch": 'arm'])
+
+        expect:
+        helper.arch != null
     }
 }
